@@ -1,49 +1,31 @@
-# arXiv Linguistic Analysis Project 🚀
+# 📚 arXiv Research Paper Search Engine
 
-A comprehensive natural language processing system for analyzing and exploring academic papers from arXiv, with advanced features for entity recognition, topic modeling, citation analysis, and interactive visualization.
+> An efficient, scalable search engine for academic research papers leveraging the arXiv API with advanced XML querying capabilities and an interactive web interface.
 
-## 📋 Table of Contents
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-blue.svg)](https://www.postgresql.org/)
 
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Core Components](#core-components)
-
+---
 
 ## 🎯 Overview
 
-This project goes beyond basic arXiv paper analysis by implementing cutting-edge NLP techniques to extract meaningful insights from academic literature. It combines multiple machine learning approaches to provide researchers with powerful tools for literature discovery, trend analysis, and citation network exploration.
+This project creates a comprehensive search system for arXiv research papers, enabling researchers and students to efficiently discover, analyze, and access academic publications through multiple interfaces including keyword search, paper ID lookup, and advanced XML-based querying.
 
-### Key Objectives
-- **Intelligent Paper Discovery**: Advanced search and recommendation systems
-- **Trend Analysis**: Temporal analysis of research directions and emerging topics
-- **Network Analysis**: Citation graphs and author influence metrics
-- **Interactive Exploration**: User-friendly web interface with real-time insights
-- **Automated Processing**: Self-updating system with scheduled data ingestion
+### Key Capabilities
+- **Real-time Data Collection** from arXiv's open API
+- **Advanced XML Querying** with XPath/XQuery support
+- **Scalable Database Storage** with optimized indexing
+- **Interactive Web Interface** built with Streamlit
+- **REST API** for programmatic access
+- **Flexible Search Options** supporting various query types
 
-## ✨ Features
+---
 
-### Core Features
-- **Multi-source Data Integration**: arXiv API + Semantic Scholar enrichment
-- **Advanced Text Processing**: NER, topic modeling, sentiment analysis
-- **Real-time Search**: Semantic search with transformer-based embeddings
-- **Citation Network Analysis**: Interactive graph visualization
-- **Temporal Trend Detection**: Time-series analysis of research patterns
-- **Author Influence Ranking**: Comprehensive contributor analysis
+## 🏗️ System Architecture
 
-### Advanced Add-ons
-- **Named Entity Recognition (NER)** with scientific entity extraction
-- **Topic Modeling** using LDA and advanced clustering
-- **Citation Graph Analysis** with network centrality metrics
-- **Interactive Web Interface** with search and exploration tools
-- **Multilingual Support** with automatic language detection
-- **Question Answering System** for natural language queries
-- **Auto-updating Pipeline** with scheduled data refresh
-
-## 🏗️ Architecture
-
+### High-Level Architecture
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Data Sources  │    │   Processing    │    │   Applications  │
@@ -64,298 +46,469 @@ This project goes beyond basic arXiv paper analysis by implementing cutting-edge
                         └─────────────────┘
 ```
 
-## 🚀 Installation
+### Detailed Component Architecture
+```mermaid
+graph TD
+    A[User Interface] --> B[Streamlit Frontend]
+    A --> C[REST API]
+    
+    B --> D[FastAPI Backend]
+    C --> D
+    
+    D --> E[arXiv API Client]
+    D --> F[Database Layer]
+    D --> G[XML Query Engine]
+    D --> H[NLP Processing Engine]
+    
+    E --> I[arXiv API]
+    E --> J[Semantic Scholar API]
+    
+    F --> K[PostgreSQL with XML Support]
+    F --> L[Vector Database]
+    F --> M[Redis Cache]
+    
+    G --> N[XPath Processor]
+    G --> O[XQuery Engine]
+    
+    H --> P[Topic Modeling]
+    H --> Q[Similarity Engine]
+    H --> R[Graph Builder]
+    
+    style A fill:#e1f5fe
+    style D fill:#f3e5f5
+    style K fill:#e8f5e8
+    style I fill:#fff3e0
+    style H fill:#f0f4c3
+```
+
+## 🔄 Data Processing Pipeline
+
+### Processing Flow
+```
+Data Ingestion → NLP Processing → Storage & Indexing → Query & Retrieval
+      │               │                   │                    │
+  ┌───────────┐  ┌──────────────┐  ┌──────────────┐  ┌────────────────┐
+  │ • API     │  │ • Text Clean │  │ • PostgreSQL │  │ • Keyword      │
+  │   Calls   │  │ • Embedding  │  │ • Vector DB  │  │   Search       │
+  │ • Rate    │  │ • Topic      │  │ • Indexing   │  │ • Semantic     │
+  │   Limits  │  │   Modeling   │  │ • Caching    │  │   Similarity   │
+  │ • Parsing │  │ • Graph      │  │ • Backup     │  │ • XML Queries  │
+  └───────────┘  └──────────────┘  └──────────────┘  └────────────────┘
+```
+
+### Query Processing Flow
+```mermaid
+flowchart LR
+    A[User Query] --> B{Query Type}
+    B -->|Keyword| C[Search arXiv API]
+    B -->|Semantic| D[Vector Similarity]
+    B -->|Paper ID| E[Fetch Specific Paper]
+    B -->|XML Query| F[Database XML Search]
+    
+    C --> G[Parse XML Response]
+    D --> H[Embedding Lookup]
+    E --> G
+    F --> I[Execute XPath/XQuery]
+    
+    G --> J[NLP Processing]
+    H --> K[Similarity Scoring]
+    I --> L[Format Results]
+    
+    J --> M[Extract Metadata]
+    K --> M
+    L --> N[Return Results]
+    
+    M --> O[Store in Database]
+    O --> N
+    N --> P[Format for Display]
+    P --> Q[Streamlit UI / API Response]
+    
+    style A fill:#ffebee
+    style N fill:#e8f5e8
+    style Q fill:#e3f2fd
+```
+
+## 🗄️ Enhanced Database Architecture
+
+### Database Schema with Advanced Features
+```mermaid
+erDiagram
+    PAPERS {
+        string paper_id PK
+        string title
+        text abstract
+        string[] authors
+        date published_date
+        string[] categories
+        string arxiv_url
+        xml metadata_xml
+        vector embedding_vector
+        float[] topic_weights
+        json citation_graph
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    AUTHORS {
+        int author_id PK
+        string name
+        string[] affiliations
+        json collaboration_graph
+        int h_index
+        int paper_count
+    }
+    
+    TOPICS {
+        int topic_id PK
+        string topic_name
+        text description
+        string[] keywords
+        vector topic_embedding
+        int paper_count
+    }
+    
+    SEARCH_QUERIES {
+        int query_id PK
+        string query_text
+        string query_type
+        json filters_applied
+        int result_count
+        float avg_relevance
+        timestamp executed_at
+        string user_session
+    }
+    
+    QUERY_RESULTS {
+        int result_id PK
+        int query_id FK
+        string paper_id FK
+        float relevance_score
+        float semantic_score
+        json explanation
+    }
+    
+    PAPER_TOPICS {
+        string paper_id FK
+        int topic_id FK
+        float weight
+        float confidence
+    }
+    
+    PAPER_AUTHORS {
+        string paper_id FK
+        int author_id FK
+        int author_order
+        string contribution_type
+    }
+    
+    CITATIONS {
+        int citation_id PK
+        string citing_paper_id FK
+        string cited_paper_id FK
+        string citation_context
+        timestamp citation_date
+    }
+    
+    PAPERS ||--o{ QUERY_RESULTS : "appears_in"
+    PAPERS ||--o{ PAPER_TOPICS : "has_topics"
+    PAPERS ||--o{ PAPER_AUTHORS : "written_by"
+    PAPERS ||--o{ CITATIONS : "cites"
+    PAPERS ||--o{ CITATIONS : "cited_by"
+    AUTHORS ||--o{ PAPER_AUTHORS : "writes"
+    TOPICS ||--o{ PAPER_TOPICS : "categorizes"
+    SEARCH_QUERIES ||--o{ QUERY_RESULTS : "contains"
+```
+
+### Storage Architecture
+```
+                    ┌─────────────────────────────────────┐
+                    │          Data Storage Layer         │
+                    └─────────────────────────────────────┘
+                                      │
+        ┌─────────────────┬───────────┼───────────┬─────────────────┐
+        │                 │           │           │                 │
+┌───────────────┐ ┌───────────────┐ ┌─────────┐ ┌───────────────┐ ┌──────────┐
+│  PostgreSQL   │ │   Vector DB   │ │  Redis  │ │  File Storage │ │ Backup   │
+│               │ │   (Pinecone/  │ │ Cache   │ │   (MinIO/S3)  │ │ System   │
+│ • Metadata    │ │   Chroma)     │ │         │ │               │ │          │
+│ • XML Data    │ │ • Embeddings  │ │ • Query │ │ • PDF Files   │ │ • Daily  │
+│ • Relations   │ │ • Similarity  │ │   Cache │ │ • Images      │ │   Snapshots│
+│ • Full-text   │ │   Search      │ │ • Session│ │ • Exports     │ │ • Archives │
+│   Indexes     │ │ • Clustering  │ │   Data  │ │ • Temp Files  │ │          │
+└───────────────┘ └───────────────┘ └─────────┘ └───────────────┘ └──────────┘
+```
+
+---
+
+## 🚀 Features
+
+### Core Functionality
+- **Multi-Modal Search**: Keyword, paper ID, author name, and category-based searches
+- **XML-Powered Queries**: Advanced filtering using XPath and XQuery expressions
+- **Real-Time Data**: Live fetching from arXiv API with intelligent caching
+- **Rich Metadata**: Comprehensive paper information including abstracts, authors, and categories
+
+### Technical Features
+- **Scalable Architecture**: Designed to handle large volumes of research papers
+- **Database Flexibility**: Support for both PostgreSQL (XML-native) and MongoDB
+- **API-First Design**: RESTful endpoints for integration with other tools
+- **Responsive UI**: Clean, intuitive interface optimized for research workflows
+
+---
+
+## 📋 Requirements Coverage
+
+| Course Requirement | Implementation |
+|-------------------|----------------|
+| **Data Collection** | arXiv API integration with rate limiting and error handling |
+| **Data Preparation** | XML parsing, text normalization, and metadata extraction |
+| **Data Access** | REST API endpoints and interactive Streamlit interface |
+| **XML Technology** | Native XML storage, XPath/XQuery processing |
+| **Database Usage** | PostgreSQL with XML extensions or MongoDB |
+| **Text Processing** | Abstract analysis, keyword extraction, linguistic processing |
+| **Technical Extension** | Advanced XML querying on real-world academic data |
+
+---
+
+### Backend Technology Stack
+```
+    API Layer           Business Logic         Data Processing
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│                  │  │                  │  │                  │
+│  ┌─────────────┐ │  │  ┌─────────────┐ │  │  ┌─────────────┐ │
+│  │   FastAPI   │ │  │  │ Search      │ │  │  │ NLP Engine  │ │
+│  │             │ │  │  │ Engine      │ │  │  │             │ │
+│  │ • REST      │ │  │  │             │ │  │  │ • spaCy     │ │
+│  │ • GraphQL   │ │  │  │ • Indexing  │ │  │  │ • NLTK      │ │
+│  │ • WebSocket │ │  │  │ • Ranking   │ │  │  │ • Transformers│ │
+│  └─────────────┘ │  │  │ • Filtering │ │  │  │ • Embeddings│ │
+│                  │  │  └─────────────┘ │  │  └─────────────┘ │
+│  ┌─────────────┐ │  │                  │  │                  │
+│  │Authentication│ │  │  ┌─────────────┐ │  │  ┌─────────────┐ │
+│  │             │ │  │  │ XML Query   │ │  │  │ ML Pipeline │ │
+│  │ • JWT       │ │  │  │ Engine      │ │  │  │             │ │
+│  │ • OAuth     │ │  │  │             │ │  │  │ • Topic     │ │
+│  │ • Rate Limit│ │  │  │ • XPath     │ │  │  │   Modeling  │ │
+│  └─────────────┘ │  │  │ • XQuery    │ │  │  │ • Clustering│ │
+└──────────────────┘  │  │ • XSLT      │ │  │  │ • Similarity│ │
+                      │  └─────────────┘ │  │  └─────────────┘ │
+                      └──────────────────┘  └──────────────────┘
+```
+
+### Frontend Architecture
+```
+    User Interface          State Management        Data Visualization
+┌──────────────────┐      ┌──────────────────┐    ┌──────────────────┐
+│                  │      │                  │    │                  │
+│  ┌─────────────┐ │      │  ┌─────────────┐ │    │  ┌─────────────┐ │
+│  │ Streamlit   │ │      │  │ Session     │ │    │  │ Plotly      │ │
+│  │ Components  │ │      │  │ State       │ │    │  │ Charts      │ │
+│  │             │ │      │  │             │ │    │  │             │ │
+│  │ • Search    │ │      │  │ • User      │ │    │  │ • Network   │ │
+│  │   Interface │ │      │  │   Prefs     │ │    │  │   Graphs    │ │
+│  │ • Results   │ │      │  │ • Query     │ │    │  │ • Topic     │ │
+│  │   Display   │ │      │  │   History   │ │    │  │   Clusters  │ │
+│  │ • Filters   │ │      │  │ • Cache     │ │    │  │ • Timeline  │ │
+│  └─────────────┘ │      │  └─────────────┘ │    │  └─────────────┘ │
+│                  │      │                  │    │                  │
+│  ┌─────────────┐ │      │  ┌─────────────┐ │    │  ┌─────────────┐ │
+│  │ Navigation  │ │      │  │ Real-time   │ │    │  │ Export      │ │
+│  │             │ │      │  │ Updates     │ │    │  │ Tools       │ │
+│  │ • Multi-page│ │      │  │             │ │    │  │             │ │
+│  │ • Sidebar   │ │      │  │ • WebSocket │ │    │  │ • PDF       │ │
+│  │ • Breadcrumb│ │      │  │ • Progress  │ │    │  │ • CSV       │ │
+│  └─────────────┘ │      │  │   Bars      │ │    │  │ • BibTeX    │ │
+└──────────────────┘      │  └─────────────┘ │    │  └─────────────┘ │
+                          └──────────────────┘    └──────────────────┘
+```
+
+---
+
+## 📦 Installation & Setup
 
 ### Prerequisites
-- Python 3.8+
-- PostgreSQL 13+
-- Redis (for caching)
-- Node.js 16+ (for web interface)
-- Docker (optional, for containerized deployment)
+- Python 3.8 or higher
+- PostgreSQL 13+ (or MongoDB 4.4+)
+- Git
 
-### Environment Setup
+### Quick Start
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/arxiv-linguistic-analysis.git
-cd arxiv-linguistic-analysis
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/arxiv-search-engine.git
+   cd arxiv-search-engine
+   ```
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+2. **Set up virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-# Install Python dependencies
-pip install -r requirements.txt
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# Install spaCy models
-python -m spacy download en_core_web_sm
-python -m spacy download en_core_web_lg
+4. **Configure database**
+   ```bash
+   cp config.example.py config.py
+   # Edit config.py with your database credentials
+   ```
 
-# Install Node.js dependencies for web interface
-cd frontend
-npm install
-cd ..
+5. **Initialize database**
+   ```bash
+   python scripts/init_db.py
+   ```
+
+6. **Start the backend API**
+   ```bash
+   uvicorn app.main:app --reload --port 8000
+   ```
+
+7. **Launch the frontend** (in a new terminal)
+   ```bash
+   streamlit run frontend/app.py
+   ```
+
+8. **Access the application**
+   - Frontend: http://localhost:8501
+   - API Documentation: http://localhost:8000/docs
+
+---
+
+## 📁 Project Structure
+
+```
+arxiv-search-engine/
+├── 📁 app/                     # Backend application
+│   ├── 📄 main.py             # FastAPI application entry point
+│   ├── 📁 api/                # API route handlers
+│   │   ├── 📄 search.py       # Search endpoints
+│   │   ├── 📄 papers.py       # Paper management endpoints
+│   │   └── 📄 xml_query.py    # XML querying endpoints
+│   ├── 📁 core/               # Core business logic
+│   │   ├── 📄 arxiv_client.py # arXiv API client
+│   │   ├── 📄 xml_processor.py# XML processing utilities
+│   │   └── 📄 search_engine.py# Search logic
+│   ├── 📁 db/                 # Database layer
+│   │   ├── 📄 models.py       # Database models
+│   │   ├── 📄 connection.py   # Database connection
+│   │   └── 📄 repositories.py # Data access layer
+│   └── 📁 utils/              # Utility functions
+├── 📁 frontend/               # Streamlit frontend
+│   ├── 📄 app.py             # Main Streamlit application
+│   ├── 📁 components/        # Reusable UI components
+│   └── 📁 pages/             # Multi-page application
+├── 📁 scripts/               # Utility scripts
+│   ├── 📄 init_db.py         # Database initialization
+│   └── 📄 data_migration.py  # Data migration utilities
+├── 📁 tests/                 # Test suite
+├── 📄 config.py              # Configuration settings
+├── 📄 requirements.txt       # Python dependencies
+├── 📄 docker-compose.yml     # Docker deployment
+└── 📄 README.md              # This file
 ```
 
-### Database Setup
+---
 
-```bash
-# Create PostgreSQL database
-createdb arxiv_analysis
+## 🔍 Usage Examples
 
-# Run migrations
-python manage.py migrate
-
-# Create vector extension (for similarity search)
-psql arxiv_analysis -c "CREATE EXTENSION IF NOT EXISTS vector;"
-```
-
-### Configuration
-
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit configuration
-nano .env
-```
-
-Required environment variables:
-```env
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/arxiv_analysis
-REDIS_URL=redis://localhost:6379/0
-
-# API Keys
-SEMANTIC_SCHOLAR_API_KEY=your_key_here
-OPENAI_API_KEY=your_key_here  # Optional, for advanced features
-
-# Application Settings
-DEBUG=True
-SECRET_KEY=your_secret_key_here
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-# Processing Settings
-MAX_PAPERS_PER_BATCH=1000
-UPDATE_FREQUENCY_HOURS=24
-```
-
-## 🏃‍♂️ Quick Start
-
-### 1. Initial Data Collection
-
-```bash
-# Download initial dataset
-python scripts/fetch_arxiv_data.py --categories "cs.CL,cs.AI" --max-papers 10000
-
-# Process papers through NLP pipeline
-python scripts/process_papers.py --batch-size 100
-
-# Build citation network
-python scripts/build_citation_graph.py
-```
-
-### 2. Start the Services
-
-```bash
-# Start the web server
-python manage.py runserver
-
-# Start background workers (in separate terminals)
-celery -A arxiv_analysis worker -l info
-celery -A arxiv_analysis beat -l info
-
-# Start frontend development server
-cd frontend
-npm run dev
-```
-
-### 3. Access the Application
-
-- **Web Interface**: http://localhost:3000
-- **API Documentation**: http://localhost:8000/docs
-- **Admin Panel**: http://localhost:8000/admin
-
-## 🧩 Core Components
-
-### 1. Data Ingestion (`src/ingestion/`)
-
-**arXiv Fetcher** (`arxiv_fetcher.py`)
+### Basic Keyword Search
 ```python
-class ArxivFetcher:
-    def __init__(self, categories=None, max_results=1000):
-        self.categories = categories or ['cs.CL', 'cs.AI']
-        self.max_results = max_results
-    
-    def fetch_papers(self, start_date=None, end_date=None):
-        """Fetch papers from arXiv API with filtering"""
-        
-    def enrich_with_semantic_scholar(self, papers):
-        """Add citation data from Semantic Scholar"""
+# Using the API directly
+import requests
+
+response = requests.get(
+    "http://localhost:8000/api/search",
+    params={"query": "machine learning", "max_results": 10}
+)
+papers = response.json()
 ```
 
-**Data Models** (`models.py`)
+### Advanced XML Query
 ```python
-class Paper(models.Model):
-    arxiv_id = models.CharField(max_length=50, unique=True)
-    title = models.TextField()
-    abstract = models.TextField()
-    authors = models.JSONField()
-    categories = models.JSONField()
-    published_date = models.DateTimeField()
-    citation_count = models.IntegerField(default=0)
-    embedding = VectorField(dimensions=768)
-    
-class Author(models.Model):
-    name = models.CharField(max_length=200)
-    institution = models.CharField(max_length=300, blank=True)
-    h_index = models.IntegerField(default=0)
-    paper_count = models.IntegerField(default=0)
-    
-class Citation(models.Model):
-    citing_paper = models.ForeignKey(Paper, on_delete=models.CASCADE)
-    cited_paper = models.ForeignKey(Paper, on_delete=models.CASCADE)
-    context = models.TextField(blank=True)
+# XPath query for papers in specific categories
+xpath_query = "//paper[category='cs.AI' or category='cs.LG']"
+response = requests.post(
+    "http://localhost:8000/api/xml-query",
+    json={"xpath": xpath_query}
+)
 ```
 
-### 2. NLP Processing (`src/nlp/`)
+### Frontend Interface
+1. Open http://localhost:8501 in your browser
+2. Enter search terms in the sidebar
+3. Apply filters for date range, categories, or authors
+4. View results with abstracts and direct arXiv links
+5. Export results to CSV or JSON
 
-**Named Entity Recognition** (`ner_processor.py`)
-```python
-import spacy
-from flair.data import Sentence
-from flair.models import SequenceTagger
+---
 
-class ScientificNER:
-    def __init__(self):
-        self.spacy_model = spacy.load("en_core_web_lg")
-        self.flair_tagger = SequenceTagger.load("ner-ontonotes-fast")
-    
-    def extract_entities(self, text):
-        """Extract scientific entities from text"""
-        entities = {
-            'methods': [],
-            'datasets': [],
-            'metrics': [],
-            'organizations': [],
-            'locations': []
-        }
-        
-        # SpaCy processing
-        doc = self.spacy_model(text)
-        for ent in doc.ents:
-            if ent.label_ in ['ORG', 'GPE']:
-                entities['organizations'].append({
-                    'text': ent.text,
-                    'label': ent.label_,
-                    'confidence': ent._.confidence if hasattr(ent._, 'confidence') else 1.0
-                })
-        
-        # Flair processing for specialized entities
-        sentence = Sentence(text)
-        self.flair_tagger.predict(sentence)
-        
-        return entities
+## 🧪 Testing
+
+Run the test suite:
+```bash
+pytest tests/ -v
 ```
 
-**Topic Modeling** (`topic_modeler.py`)
-```python
-from sklearn.decomposition import LatentDirichletAllocation
-from sklearn.feature_extraction.text import TfidfVectorizer
-import numpy as np
-
-class TopicModeler:
-    def __init__(self, n_topics=20, random_state=42):
-        self.n_topics = n_topics
-        self.vectorizer = TfidfVectorizer(
-            max_features=5000,
-            stop_words='english',
-            ngram_range=(1, 2)
-        )
-        self.lda_model = LatentDirichletAllocation(
-            n_components=n_topics,
-            random_state=random_state,
-            learning_method='batch'
-        )
-    
-    def fit_transform(self, documents):
-        """Fit topic model and return document-topic matrix"""
-        tfidf_matrix = self.vectorizer.fit_transform(documents)
-        doc_topic_matrix = self.lda_model.fit_transform(tfidf_matrix)
-        return doc_topic_matrix
-    
-    def get_topic_words(self, n_words=10):
-        """Get top words for each topic"""
-        feature_names = self.vectorizer.get_feature_names_out()
-        topics = []
-        
-        for topic_idx, topic in enumerate(self.lda_model.components_):
-            top_words_idx = topic.argsort()[-n_words:][::-1]
-            top_words = [feature_names[i] for i in top_words_idx]
-            topics.append({
-                'id': topic_idx,
-                'words': top_words,
-                'weights': topic[top_words_idx].tolist()
-            })
-        
-        return topics
+Run with coverage:
+```bash
+pytest tests/ --cov=app --cov-report=html
 ```
 
-### 3. Citation Network Analysis (`src/network/`)
+---
 
-**Graph Builder** (`citation_graph.py`)
-```python
-import networkx as nx
-from community import community_louvain
+## 🚢 Deployment
 
-class CitationNetworkAnalyzer:
-    def __init__(self):
-        self.graph = nx.DiGraph()
-    
-    def build_graph(self, papers, citations):
-        """Build citation network from paper and citation data"""
-        # Add nodes (papers)
-        for paper in papers:
-            self.graph.add_node(
-                paper.arxiv_id,
-                title=paper.title,
-                year=paper.published_date.year,
-                citation_count=paper.citation_count
-            )
-        
-        # Add edges (citations)
-        for citation in citations:
-            self.graph.add_edge(
-                citation.citing_paper.arxiv_id,
-                citation.cited_paper.arxiv_id
-            )
-    
-    def calculate_centrality_metrics(self):
-        """Calculate various centrality measures"""
-        metrics = {}
-        
-        # PageRank (paper importance)
-        pagerank = nx.pagerank(self.graph)
-        
-        # Betweenness centrality (bridging papers)
-        betweenness = nx.betweenness_centrality(self.graph)
-        
-        # In-degree (citation count)
-        in_degree = dict(self.graph.in_degree())
-        
-        for node in self.graph.nodes():
-            metrics[node] = {
-                'pagerank': pagerank.get(node, 0),
-                'betweenness': betweenness.get(node, 0),
-                'in_degree': in_degree.get(node, 0),
-                'out_degree': self.graph.out_degree(node)
-            }
-        
-        return metrics
-    
-    def detect_communities(self):
-        """Detect research communities using Louvain algorithm"""
-        undirected_graph = self.graph.to_undirected()
-        communities = community_louvain.best_partition(undirected_graph)
-        return communities
+### Using Docker
+```bash
+docker-compose up -d
 ```
+
+### Manual Deployment
+1. Set up production database
+2. Configure environment variables
+3. Install dependencies: `pip install -r requirements.txt`
+4. Run migrations: `python scripts/init_db.py`
+5. Start services with a process manager like systemd or supervisor
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and add tests
+4. Commit your changes: `git commit -am 'Add feature'`
+5. Push to the branch: `git push origin feature-name`
+6. Submit a pull request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🆘 Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/arxiv-search-engine/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/arxiv-search-engine/discussions)
+- **Email**: your.email@example.com
+
+---
+
+## 🙏 Acknowledgments
+
+- [arXiv](https://arxiv.org/) for providing open access to research papers
+- [FastAPI](https://fastapi.tiangolo.com/) for the excellent web framework
+- [Streamlit](https://streamlit.io/) for the intuitive frontend framework
+- The open-source community for the amazing tools and libraries
+
+---
+
+**⭐ If you find this project useful, please consider giving it a star!**
