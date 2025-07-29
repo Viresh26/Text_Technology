@@ -1,4 +1,8 @@
 import os
+from fastapi import FastAPI, HTTPException # Import HTTPException for proper error handling
+from fastapi.middleware.cors import CORSMiddleware # Import CORSMiddleware for CORS
+from pydantic import BaseModel
+from typing import List, Dict
 import time
 import numpy as np
 import xml.etree.ElementTree as ET
@@ -7,6 +11,18 @@ from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sentence_transformers import SentenceTransformer
+import torch
+
+# --- Configuration ---
+# Choose your BERT-based model.
+# 'all-MiniLM-L6-v2' is fast and good for many tasks.
+# 'all-mpnet-base-v2' offers higher quality but is larger/slower.
+# 'intfloat/e5-small' is another strong option as mentioned in your PDF.
+EMBEDDING_MODEL_NAME = 'all-MiniLM-L6-v2'
+
+# CORS configuration
+# You should update allow_origins with the actual domains that will access your API in production.
+# For local development or broad access, you can use ["*"].
 from typing import List, Optional, Dict
 
 # Load environment variables from .env file
@@ -45,21 +61,65 @@ app = FastAPI(
 
 # --- CORS Middleware ---
 origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    # Add other origins where your frontend or clients will be hosted, e.g.:
+    # "https://your-frontend-domain.com",
     "*",
 ]
+
+# FastAPI application initialization
+app = FastAPI(
+    title="BERT Document Embedding API",
+    description=f"API to generate document embeddings using the {EMBEDDING_MODEL_NAME} model.",
+    version="1.0.0",
+)
+
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=origins, # Allows specific origins or ["*"] for all
+    allow_credentials=True, # Allow cookies to be included in cross-origin HTTP requests
+    allow_methods=["*"], # Allow all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"], # Allow all headers
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Load the Sentence-BERT model once when the application starts
+# This avoids reloading the model for every API request, which is crucial for performance.
+try:
+    # Check for GPU availability and use it if possible
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = SentenceTransformer(EMBEDDING_MODEL_NAME, device=device)
+    print(f"Successfully loaded model '{EMBEDDING_MODEL_NAME}' on device: {device}")
+except Exception as e:
+    print(f"Error loading model '{EMBEDDING_MODEL_NAME}': {e}")
+    # In a production environment, you might want to raise an exception or exit
+    # For now, we'll try to continue with a placeholder or handle gracefully.
+    model = None # Indicate that model loading failed
+
+# --- Pydantic Models for Request and Response ---
+
 # --- Pydantic Models for Request/Response Validation ---
 class TextInput(BaseModel):
+    """
+    Input schema for the embedding endpoint.
+    text: The input text (e.g., an abstract, a full document).
+    """
+    text: str
     text: str = Field(..., example="This paper discusses novel deep learning architectures for natural language understanding.")
 
 class EmbeddingOutput(BaseModel):
+    """
+    Output schema for the embedding endpoint.
+    embedding: A list of floats representing the document embedding.
+    model_used: The name of the embedding model used.
+    """
+    embedding: List[float]
+    model_used: str
     embedding: List[float] = Field(..., description="The BERT-based document embedding (list of floats).")
     model_used: str = Field(..., example=EMBEDDING_MODEL_NAME, description="The name of the Sentence-BERT model used.")
 
@@ -71,6 +131,13 @@ class BatchEmbeddingOutput(BaseModel):
     model_used: str = Field(..., example=EMBEDDING_MODEL_NAME, description="The name of the Sentence-BERT model used.")
 
 class HealthCheck(BaseModel):
+    """
+    Schema for health check response.
+    status: "ok" if the service is running and model is loaded.
+    model_loaded: Boolean indicating if the model was loaded successfully.
+    """
+    status: str
+    model_loaded: bool
     status: str = Field(..., example="ok")
     model_loaded: bool = Field(..., example=True)
 
