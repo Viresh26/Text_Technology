@@ -5,10 +5,30 @@ import sqlite3
 import logging
 from sentence_transformers import SentenceTransformer
 
+
+
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')  # Load the embedding model
 
 # Configure logging for better debugging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def create_arxiv_database(db_path="arxiv_corpus.db"):
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS arxiv_papers (
+            id TEXT PRIMARY KEY,
+            title TEXT,
+            summary TEXT,
+            published TEXT,
+            updated TEXT,
+            authors TEXT,
+            primary_category TEXT,
+            embedding TEXT
+        )
+    ''')
+    conn.commit()
+    conn.close()
 
 def parse_arxiv_xml(xml_content: str) -> list:
     papers_data = []
@@ -67,7 +87,8 @@ def create_database_and_table(db_name: str):
                 published TEXT,
                 updated TEXT,
                 authors TEXT,
-                primary_category TEXT
+                primary_category TEXT,
+                embedding TEXT
             )
         ''')
         conn.commit()
@@ -82,11 +103,11 @@ def create_database_and_table(db_name: str):
 def insert_paper_data(db_name: str, paper_data: dict):
     conn = None
     try:
-        conn = sqlite3.connect(db_name)
+        conn = sqlite3.connect("arxiv_corpus.db")
         cursor = conn.cursor()
         cursor.execute('''
-            INSERT OR IGNORE INTO arxiv_papers (id, title, summary, published, updated, authors, primary_category)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT OR IGNORE INTO arxiv_papers (id, title, summary, published, updated, authors, primary_category, embedding)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             paper_data.get('id'),
             paper_data.get('title'),
@@ -94,7 +115,8 @@ def insert_paper_data(db_name: str, paper_data: dict):
             paper_data.get('published'),
             paper_data.get('updated'),
             paper_data.get('authors'),
-            paper_data.get('primary_category')
+            paper_data.get('primary_category'),
+            str(paper_data.get('embedding'))
         ))
         conn.commit()
         logging.info(f"Inserted/Ignored paper: {paper_data.get('id')}")
@@ -141,7 +163,6 @@ def fetch_parse_and_save_to_db(keyword: str, num_papers: int = 5,
             for paper, embedding in zip(parsed_papers, embeddings):
                 paper['embedding'] = embedding.cpu().numpy().tolist()
 
-
             print(f"4. Creating/Connecting to database '{full_database_path}' and ensuring table exists...")
             create_database_and_table(full_database_path)
 
@@ -157,6 +178,8 @@ def fetch_parse_and_save_to_db(keyword: str, num_papers: int = 5,
     print(f"--- Process completed for keyword: '{keyword}' ---")
 
 if __name__ == "__main__":
+    create_arxiv_database()
+
     user_keyword = input("Enter the keyword you want to search for in arXiv Computer Science papers: ")
     num_papers_to_fetch = 5 # You can adjust this number
 
