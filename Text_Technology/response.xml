@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3D%28cat%3Acs.AI%20OR%20cat%3Acs.CL%20OR%20cat%3Acs.HC%20OR%20cat%3Acs.LG%20OR%20cat%3Acs.MA%29%20AND%20voice%26id_list%3D%26start%3D0%26max_results%3D5" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=(cat:cs.AI OR cat:cs.CL OR cat:cs.HC OR cat:cs.LG OR cat:cs.MA) AND voice&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <id>http://arxiv.org/api/J0TaqTlqcSVuhRMbwwjRGupJsg0</id>
+  <updated>2025-07-29T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">2972</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">5</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1801.03604v1</id>
+    <updated>2018-01-11T01:23:50Z</updated>
+    <published>2018-01-11T01:23:50Z</published>
+    <title>Conversational AI: The Science Behind the Alexa Prize</title>
+    <summary>  Conversational agents are exploding in popularity. However, much work remains
+in the area of social conversation as well as free-form conversation over a
+broad range of domains and topics. To advance the state of the art in
+conversational AI, Amazon launched the Alexa Prize, a 2.5-million-dollar
+university competition where sixteen selected university teams were challenged
+to build conversational agents, known as socialbots, to converse coherently and
+engagingly with humans on popular topics such as Sports, Politics,
+Entertainment, Fashion and Technology for 20 minutes. The Alexa Prize offers
+the academic community a unique opportunity to perform research with a live
+system used by millions of users. The competition provided university teams
+with real user conversational data at scale, along with the user-provided
+ratings and feedback augmented with annotations by the Alexa team. This enabled
+teams to effectively iterate and make improvements throughout the competition
+while being evaluated in real-time through live user interactions. To build
+their socialbots, university teams combined state-of-the-art techniques with
+novel strategies in the areas of Natural Language Understanding, Context
+Modeling, Dialog Management, Response Generation, and Knowledge Acquisition. To
+support the efforts of participating teams, the Alexa Prize team made
+significant scientific and engineering investments to build and improve
+Conversational Speech Recognition, Topic Tracking, Dialog Evaluation, Voice
+User Experience, and tools for traffic management and scalability. This paper
+outlines the advances created by the university teams as well as the Alexa
+Prize team to achieve the common goal of solving the problem of Conversational
+AI.
+</summary>
+    <author>
+      <name>Ashwin Ram</name>
+    </author>
+    <author>
+      <name>Rohit Prasad</name>
+    </author>
+    <author>
+      <name>Chandra Khatri</name>
+    </author>
+    <author>
+      <name>Anu Venkatesh</name>
+    </author>
+    <author>
+      <name>Raefer Gabriel</name>
+    </author>
+    <author>
+      <name>Qing Liu</name>
+    </author>
+    <author>
+      <name>Jeff Nunn</name>
+    </author>
+    <author>
+      <name>Behnam Hedayatnia</name>
+    </author>
+    <author>
+      <name>Ming Cheng</name>
+    </author>
+    <author>
+      <name>Ashish Nagar</name>
+    </author>
+    <author>
+      <name>Eric King</name>
+    </author>
+    <author>
+      <name>Kate Bland</name>
+    </author>
+    <author>
+      <name>Amanda Wartick</name>
+    </author>
+    <author>
+      <name>Yi Pan</name>
+    </author>
+    <author>
+      <name>Han Song</name>
+    </author>
+    <author>
+      <name>Sk Jayadevan</name>
+    </author>
+    <author>
+      <name>Gene Hwang</name>
+    </author>
+    <author>
+      <name>Art Pettigrue</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">18 pages, 5 figures, Alexa Prize Proceedings Paper
+  (https://developer.amazon.com/alexaprize/proceedings), Alexa Prize University
+  Competition to advance Conversational AI</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Alexa.Prize.Proceedings
+  https://developer.amazon.com/alexaprize/proceedings accessed (2018)-01-01</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1801.03604v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1801.03604v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="97R40" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="I.2.7" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1911.06747v1</id>
+    <updated>2019-11-15T16:56:17Z</updated>
+    <published>2019-11-15T16:56:17Z</published>
+    <title>Towards Personalized Dialog Policies for Conversational Skill Discovery</title>
+    <summary>  Many businesses and consumers are extending the capabilities of voice-based
+services such as Amazon Alexa, Google Home, Microsoft Cortana, and Apple Siri
+to create custom voice experiences (also known as skills). As the number of
+these experiences increases, a key problem is the discovery of skills that can
+be used to address a user's request. In this paper, we focus on conversational
+skill discovery and present a conversational agent which engages in a dialog
+with users to help them find the skills that fulfill their needs. To this end,
+we start with a rule-based agent and improve it by using reinforcement
+learning. In this way, we enable the agent to adapt to different user
+attributes and conversational styles as it interacts with users. We evaluate
+our approach in a real production setting by deploying the agent to interact
+with real users, and show the effectiveness of the conversational agent in
+helping users find the skills that serve their request.
+</summary>
+    <author>
+      <name>Maryam Fazel-Zarandi</name>
+    </author>
+    <author>
+      <name>Sampat Biswas</name>
+    </author>
+    <author>
+      <name>Ryan Summers</name>
+    </author>
+    <author>
+      <name>Ahmed Elmalt</name>
+    </author>
+    <author>
+      <name>Andy McCraw</name>
+    </author>
+    <author>
+      <name>Michael McPhilips</name>
+    </author>
+    <author>
+      <name>John Peach</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">The 3rd Conversational AI workshop - today's practice and tomorrow's
+  potential</arxiv:comment>
+    <link href="http://arxiv.org/abs/1911.06747v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1911.06747v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2311.14730v1</id>
+    <updated>2023-11-20T19:41:50Z</updated>
+    <published>2023-11-20T19:41:50Z</published>
+    <title>MemoryCompanion: A Smart Healthcare Solution to Empower Efficient
+  Alzheimer's Care Via Unleashing Generative AI</title>
+    <summary>  With the rise of Large Language Models (LLMs), notably characterized by GPT
+frameworks, there emerges a catalyst for novel healthcare applications. Earlier
+iterations of chatbot caregivers, though existent, have yet to achieve a
+dimension of human-like authenticity. This paper unveils `MemoryCompanion' a
+pioneering digital health solution explicitly tailored for Alzheimer's disease
+(AD) patients and their caregivers. Drawing upon the nuances of GPT technology
+and prompt engineering, MemoryCompanion manifests a personalized caregiving
+paradigm, fostering interactions via voice-cloning and talking-face mechanisms
+that resonate with the familiarity of known companions. Using advanced
+prompt-engineering, the system intricately adapts to each patient's distinct
+profile, curating its content and communication style accordingly. This
+approach strives to counteract prevalent issues of social isolation and
+loneliness frequently observed in AD demographics. Our methodology, grounded in
+its innovative design, addresses both the caregiving and technological
+challenges intrinsic to this domain.
+</summary>
+    <author>
+      <name>Lifei Zheng</name>
+    </author>
+    <author>
+      <name>Yeonie Heo</name>
+    </author>
+    <author>
+      <name>Yi Fang</name>
+    </author>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Machine Learning for Health (ML4H 2023)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/2311.14730v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2311.14730v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2402.07938v2</id>
+    <updated>2024-04-16T07:39:05Z</updated>
+    <published>2024-02-07T21:08:49Z</published>
+    <title>Large Language User Interfaces: Voice Interactive User Interfaces
+  powered by LLMs</title>
+    <summary>  The evolution of Large Language Models (LLMs) has showcased remarkable
+capacities for logical reasoning and natural language comprehension. These
+capabilities can be leveraged in solutions that semantically and textually
+model complex problems. In this paper, we present our efforts toward
+constructing a framework that can serve as an intermediary between a user and
+their user interface (UI), enabling dynamic and real-time interactions. We
+employ a system that stands upon textual semantic mappings of UI components, in
+the form of annotations. These mappings are stored, parsed, and scaled in a
+custom data structure, supplementary to an agent-based prompting backend
+engine. Employing textual semantic mappings allows each component to not only
+explain its role to the engine but also provide expectations. By comprehending
+the needs of both the user and the components, our LLM engine can classify the
+most appropriate application, extract relevant parameters, and subsequently
+execute precise predictions of the user's expected actions. Such an integration
+evolves static user interfaces into highly dynamic and adaptable solutions,
+introducing a new frontier of intelligent and responsive user experiences.
+</summary>
+    <author>
+      <name>Syed Mekael Wasti</name>
+    </author>
+    <author>
+      <name>Ken Q. Pu</name>
+    </author>
+    <author>
+      <name>Ali Neshati</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted as peer-reviewed publication</arxiv:comment>
+    <link href="http://arxiv.org/abs/2402.07938v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2402.07938v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="I.2.7; I.2.1" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2304.11079v1</id>
+    <updated>2023-02-12T22:05:08Z</updated>
+    <published>2023-02-12T22:05:08Z</published>
+    <title>Academic Writing with GPT-3.5: Reflections on Practices, Efficacy and
+  Transparency</title>
+    <summary>  The debate around the use of GPT 3.5 has been a popular topic among academics
+since the release of ChatGPT. Whilst some have argued for the advantages of GPT
+3.5 in enhancing academic writing, others have raised concerns such as
+plagiarism, the spread of false information, and ecological issues. The need
+for finding ways to use GPT 3.5 models transparently has been voiced, and
+suggestions have been made on social media as to how to use GPT 3.5 models in a
+smart way. Nevertheless, to date, there is a lack of literature which clearly
+outlines how to use GPT 3.5 models in academic writing, how effective they are,
+and how to use them transparently. To address this, I conducted a personal
+experience experiment with GPT 3.5, specifically by using OpenAI text davinci
+003 model, for writing this article. I identified five ways of using GPT 3.5:
+Chunk Stylist, Bullet to Paragraph, Talk Textualizer, Research Buddy, and
+Polisher. I reflected on their efficacy, and commented on their potential
+impact on writing ethics. Additionally, I provided a comprehensive document
+which shows the prompts I used, results I got from GPT 3.5, the final edits and
+visually compares those by showing the differences in percentages.
+</summary>
+    <author>
+      <name>Oğuz 'Oz' Buruk</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1145/3616961.3616992</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1145/3616961.3616992" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">9 Pages, 84 Pages of Appendix</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">2023 In Proceedings of the 26th International Academic Mindtrek
+  Conference (Mindtrek 2023)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/2304.11079v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2304.11079v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

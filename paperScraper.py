@@ -37,12 +37,13 @@ def get_arxiv_cs_papers_by_keyword(keyword: str, num_results: int = 5) -> list:
     print(f"Fetching raw XML from arXiv for keyword '{keyword}' (top {num_results} results)...")
 
     try:
-        # Use requests library to make the HTTP GET request
-        # Adding a User-Agent header is good practice for web requests
-        headers = {
-            "User-Agent": "MyArXivCrawler/1.0 (contact: kashettivir@gmail.com)" # Placeholder email
-        }
-        response = requests.get(api_url, headers=headers, timeout=10) # Add a timeout
+        # # Use requests library to make the HTTP GET request
+        # # Adding a User-Agent header is good practice for web requests
+        # headers = {
+        #     "User-Agent": "MyArXivCrawler/1.0 (contact: kashettivir@gmail.com)" # Placeholder email
+        # }
+        print(api_url)
+        response = requests.get(api_url)
 
         # Raise an exception for HTTP errors (4xx or 5xx)
         response.raise_for_status()
@@ -78,15 +79,8 @@ if __name__ == "__main__":
     # Display the results
     if found_papers:
         print(f"\n--- Top {len(found_papers)} Computer Science Papers related to '{user_keyword}' ---")
-        for i, paper in enumerate(found_papers):
-            print(f"\nPaper {i+1}:")
-            print(f"  Title: {paper['title']}")
-            print(f"  Authors: {', '.join(paper['authors'])}")
-            print(f"  Published Date: {paper['published']}")
-            print(f"  Summary: {paper['summary'][:100]}...")
-            print(f"  PDF Link: {paper['pdf_url']}")
-            print(f"  arXiv ID: {paper['entry_id']}")
-            print("-" * 40) # Separator for readability
+        with open("Text_Technology/response.xml", 'w', encoding='utf-8') as f:
+            f.write(found_papers)
     else:
         print(f"\nNo papers found in the 'Computer Science' category for the keyword '{user_keyword}'.")
         print("Consider trying a different keyword or broadening your search.")

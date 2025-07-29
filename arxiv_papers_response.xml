@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3D%28cat%3Acs.AI%20OR%20cat%3Acs.CL%20OR%20cat%3Acs.HC%20OR%20cat%3Acs.LG%20OR%20cat%3Acs.MA%29%20AND%20tech%26id_list%3D%26start%3D0%26max_results%3D5" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=(cat:cs.AI OR cat:cs.CL OR cat:cs.HC OR cat:cs.LG OR cat:cs.MA) AND tech&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <id>http://arxiv.org/api/tlngPUAssY5UugGoWxR5E3Yjvwk</id>
+  <updated>2025-07-29T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">535</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">5</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/2312.06871v1</id>
+    <updated>2023-12-11T22:39:12Z</updated>
+    <published>2023-12-11T22:39:12Z</published>
+    <title>Using Analytics on Student Created Data to Content Validate Pedagogical
+  Tools</title>
+    <summary>  Conceptual and simulation models can function as useful pedagogical tools,
+however it is important to categorize different outcomes when evaluating them
+in order to more meaningfully interpret results. VERA is a ecology-based
+conceptual modeling software that enables users to simulate interactions
+between biotics and abiotics in an ecosystem, allowing users to form and then
+verify hypothesis through observing a time series of the species populations.
+In this paper, we classify this time series into common patterns found in the
+domain of ecological modeling through two methods, hierarchical clustering and
+curve fitting, illustrating a general methodology for showing content validity
+when combining different pedagogical tools. When applied to a diverse sample of
+263 models containing 971 time series collected from three different VERA user
+categories: a Georgia Tech (GATECH), North Georgia Technical College (NGTC),
+and ``Self Directed Learners'', results showed agreement between both
+classification methods on 89.38\% of the sample curves in the test set. This
+serves as a good indication that our methodology for determining content
+validity was successful.
+</summary>
+    <author>
+      <name>John Kos</name>
+    </author>
+    <author>
+      <name>Kenneth Eaton</name>
+    </author>
+    <author>
+      <name>Sareen Zhang</name>
+    </author>
+    <author>
+      <name>Rahul Dass</name>
+    </author>
+    <author>
+      <name>Stephen Buckley</name>
+    </author>
+    <author>
+      <name>Sungeun An</name>
+    </author>
+    <author>
+      <name>Ashok Goel</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">16 pages, preprint</arxiv:comment>
+    <link href="http://arxiv.org/abs/2312.06871v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2312.06871v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.19855v1</id>
+    <updated>2024-10-22T14:11:26Z</updated>
+    <published>2024-10-22T14:11:26Z</published>
+    <title>Personalized Recommendation Systems using Multimodal, Autonomous, Multi
+  Agent Systems</title>
+    <summary>  This paper describes a highly developed personalised recommendation system
+using multimodal, autonomous, multi-agent systems. The system focuses on the
+incorporation of futuristic AI tech and LLMs like Gemini-1.5- pro and LLaMA-70B
+to improve customer service experiences especially within e-commerce. Our
+approach uses multi agent, multimodal systems to provide best possible
+recommendations to its users. The system is made up of three agents as a whole.
+The first agent recommends products appropriate for answering the given
+question, while the second asks follow-up questions based on images that belong
+to these recommended products and is followed up with an autonomous search by
+the third agent. It also features a real-time data fetch, user
+preferences-based recommendations and is adaptive learning. During complicated
+queries the application processes with Symphony, and uses the Groq API to
+answer quickly with low response times. It uses a multimodal way to utilize
+text and images comprehensively, so as to optimize product recommendation and
+customer interaction.
+</summary>
+    <author>
+      <name>Param Thakkar</name>
+    </author>
+    <author>
+      <name>Anushka Yadav</name>
+    </author>
+    <link href="http://arxiv.org/abs/2410.19855v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2410.19855v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2411.19140v1</id>
+    <updated>2024-11-28T13:41:44Z</updated>
+    <published>2024-11-28T13:41:44Z</published>
+    <title>Examining Multimodal Gender and Content Bias in ChatGPT-4o</title>
+    <summary>  This study investigates ChatGPT-4o's multimodal content generation,
+highlighting significant disparities in its treatment of sexual content and
+nudity versus violent and drug-related themes. Detailed analysis reveals that
+ChatGPT-4o consistently censors sexual content and nudity, while showing
+leniency towards violence and drug use. Moreover, a pronounced gender bias
+emerges, with female-specific content facing stricter regulation compared to
+male-specific content. This disparity likely stems from media scrutiny and
+public backlash over past AI controversies, prompting tech companies to impose
+stringent guidelines on sensitive issues to protect their reputations. Our
+findings emphasize the urgent need for AI systems to uphold genuine ethical
+standards and accountability, transcending mere political correctness. This
+research contributes to the understanding of biases in AI-driven language and
+multimodal models, calling for more balanced and ethical content moderation
+practices.
+</summary>
+    <author>
+      <name>Roberto Balestri</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">17 pages, 4 figures, 3 tables. Conference: "14th International
+  Conference on Artificial Intelligence, Soft Computing and Applications (AIAA
+  2024), London, 23-24 November 2024" It will be published in the proceedings
+  "David C. Wyld et al. (Eds): IoTE, CNDC, DSA, AIAA, NLPTA, DPPR - 2024"</arxiv:comment>
+    <link href="http://arxiv.org/abs/2411.19140v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2411.19140v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.OT" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2306.16740v4</id>
+    <updated>2023-09-19T20:02:06Z</updated>
+    <published>2023-06-29T07:31:43Z</published>
+    <title>Principles and Guidelines for Evaluating Social Robot Navigation
+  Algorithms</title>
+    <summary>  A major challenge to deploying robots widely is navigation in human-populated
+environments, commonly referred to as social robot navigation. While the field
+of social navigation has advanced tremendously in recent years, the fair
+evaluation of algorithms that tackle social navigation remains hard because it
+involves not just robotic agents moving in static environments but also dynamic
+human agents and their perceptions of the appropriateness of robot behavior. In
+contrast, clear, repeatable, and accessible benchmarks have accelerated
+progress in fields like computer vision, natural language processing and
+traditional robot navigation by enabling researchers to fairly compare
+algorithms, revealing limitations of existing solutions and illuminating
+promising new directions. We believe the same approach can benefit social
+navigation. In this paper, we pave the road towards common, widely accessible,
+and repeatable benchmarking criteria to evaluate social robot navigation. Our
+contributions include (a) a definition of a socially navigating robot as one
+that respects the principles of safety, comfort, legibility, politeness, social
+competency, agent understanding, proactivity, and responsiveness to context,
+(b) guidelines for the use of metrics, development of scenarios, benchmarks,
+datasets, and simulators to evaluate social navigation, and (c) a design of a
+social navigation metrics framework to make it easier to compare results from
+different simulators, robots and datasets.
+</summary>
+    <author>
+      <name>Anthony Francis</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Logical Robotics</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Claudia Pérez-D'Arpino</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">NVIDIA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Chengshu Li</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Stanford</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Fei Xia</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Alexandre Alahi</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">EPFL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Rachid Alami</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LAAS-CNRS, Universite de Toulouse</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Aniket Bera</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Purdue</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Abhijat Biswas</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">CMU</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Joydeep Biswas</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Rohan Chandra</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Hao-Tien Lewis Chiang</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Michael Everett</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Northeastern</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Sehoon Ha</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Georgia Tech</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Justin Hart</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Jonathan P. How</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">MIT</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Haresh Karnan</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Tsang-Wei Edward Lee</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Luis J. Manso</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Aston</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Reuth Mirksy</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Bar Ilan</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Sören Pirk</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Adobe</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Phani Teja Singamaneni</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LAAS-CNRS, Universite de Toulouse</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Peter Stone</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Sony AI</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Ada V. Taylor</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">CMU</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Peter Trautman</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Honda</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Nathan Tsoi</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Yale</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Marynel Vázquez</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Yale</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Xuesu Xiao</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">GMU</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Peng Xu</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Naoki Yokoyama</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Georgia Tech</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Alexander Toshev</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Apple</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Roberto Martín-Martín</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UT Austin</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">42 pages, 11 figures, 6 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/2306.16740v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2306.16740v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="I.2.9" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.06519v2</id>
+    <updated>2019-01-09T18:31:04Z</updated>
+    <published>2018-10-15T17:06:38Z</published>
+    <title>Factorized Machine Self-Confidence for Decision-Making Agents</title>
+    <summary>  Algorithmic assurances from advanced autonomous systems assist human users in
+understanding, trusting, and using such systems appropriately. Designing these
+systems with the capacity of assessing their own capabilities is one approach
+to creating an algorithmic assurance. The idea of `machine self-confidence' is
+introduced for autonomous systems. Using a factorization based framework for
+self-confidence assessment, one component of self-confidence, called
+`solver-quality', is discussed in the context of Markov decision processes for
+autonomous systems. Markov decision processes underlie much of the theory of
+reinforcement learning, and are commonly used for planning and decision making
+under uncertainty in robotics and autonomous systems. A `solver quality' metric
+is formally defined in the context of decision making algorithms based on
+Markov decision processes. A method for assessing solver quality is then
+derived, drawing inspiration from empirical hardness models. Finally, numerical
+experiments for an unmanned autonomous vehicle navigation problem under
+different solver, parameter, and environment conditions indicate that the
+self-confidence metric exhibits the desired properties. Discussion of results,
+and avenues for future investigation are included.
+</summary>
+    <author>
+      <name>Brett W Israelsen</name>
+    </author>
+    <author>
+      <name>Nisar R Ahmed</name>
+    </author>
+    <author>
+      <name>Eric Frew</name>
+    </author>
+    <author>
+      <name>Dale Lawrence</name>
+    </author>
+    <author>
+      <name>Brian Argrow</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">title change, leaving as stand-alone tech report</arxiv:comment>
+    <link href="http://arxiv.org/abs/1810.06519v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.06519v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>
