@@ -1,8 +1,4 @@
-Here's the **fully merged and comprehensive `README.md`** that combines all content from your previous documents — with nothing left out:
 
----
-
-````markdown
 # 📚 arXiv Research Paper Search Engine
 
 > Efficient Academic Paper Discovery with Advanced XML Querying and Document Embeddings
