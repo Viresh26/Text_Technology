@@ -1,411 +1,180 @@
-# 📚 arXiv Research Paper Search Engine
+# 📚 arXiv Research Paper Search Engine  
+**Efficient Academic Paper Discovery with Advanced Document Embeddings and Semantic Search**  
 
-> Efficient Academic Paper Discovery with Advanced Document Embeddings and Semantic Search
+**By:** Rustom Bhesania & Viresh Kashetti  
+**Course:** Text Technology Summer 25  
+
+---
+
+## 🧰 Tech Stack Used
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0+-blue.svg)](https://www.mysql.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-Built--in-lightgrey.svg)](https://www.sqlite.org/)
 [![arXiv API](https://img.shields.io/badge/arXiv-API-orange.svg)](https://arxiv.org/help/api)
 
-**By: Rustom Bhesania & Viresh Kashetti**  
-*Text Technology Summer 25*
+- **Python 3.8+** – Core programming language for scripts and backend logic  
+- **FastAPI** – Planned integration for building a high-performance REST API  
+- **SQLite** – Lightweight relational database for local storage of parsed arXiv papers  
+- **arXiv API** – Used to fetch academic paper metadata (title, abstract, authors, etc.)  
+- **SentenceTransformers** – For generating semantic embeddings from paper abstracts
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 Problem Statement  
 
 Current academic research discovery faces several challenges:
 
-- **Time-Intensive Literature Review**
-- **Limited Search Capabilities**
-- **Lack of Semantic Understanding**
-- **No Similarity Analysis**
+- **Time-Intensive Literature Review:** Manually sifting through numerous papers is time-consuming.  
+- **Limited Search Capabilities:** Traditional keyword searches often miss semantically related papers.  
+- **Lack of Semantic Understanding:** Current tools struggle to understand the context and meaning of research papers.  
+- **No Similarity Analysis:** Difficulty in identifying truly similar papers based on content, not just keywords.  
 
 ---
 
-## 💡 Proposed Solution
+## 💡 Proposed Solution  
 
-A **local database of arXiv papers** with advanced similarity evaluation using:
+This project proposes a local database of arXiv papers with advanced similarity evaluation using:
 
-- Document Embeddings (BERT-based)
-- XML parsing of arXiv responses
-- Multi-modal Search Capabilities
-- FastAPI Interface for Real-Time Semantic Search
+- **Document Embeddings (BERT-based):** Leveraging pre-trained models to create meaningful numerical representations of paper abstracts.  
+- **XML Parsing of arXiv Responses:** Efficiently extracting structured data from arXiv's API.  
+- **Multi-modal Search Capabilities:** Enabling searches beyond simple keywords.  
+- **FastAPI Interface for Real-Time Semantic Search:** *(Planned for future integration)*  
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Architecture  
 
 ```mermaid
 graph TD
     A[arXiv API] --> B[XML Response]
     B --> C[XML Processing]
-    C --> D[MySQL Database]
+    C --> D[SQLite Database]
     D --> E[Abstract Extraction]
     E --> F[Document Embeddings]
     F --> G[Similarity Comparison]
     G --> H[Similar Papers Output]
 
-    I[User Query] --> J[FastAPI Search Engine]
-    J --> D
-    J --> F
-
-    style A fill:#ff9800
-    style D fill:#4caf50
-    style F fill:#2196f3
-    style H fill:#9c27b0
-```
+    I[User Query] --> J[FastAPI Search Interface]
+    J --> G
+````
 
 ---
 
-## 🚀 Key Features
+## 📁 Repository Structure
 
-### 📌 Core Features
-
-* **arXiv API Integration:** Query by category, keyword, or author
-* **XML Parsing:** Efficient XML processing of arXiv responses
-* **MySQL Storage:** Reliable local storage of metadata and embeddings
-* **BERT-based Embeddings:** Using Sentence-BERT's lightweight all-MiniLM-L6-v2 model
-* **REST API:** Easy integration with frontend apps or other services
-* **CORS Enabled:** Ready for cross-origin HTTP requests
-* **Rate Limit Respect:** Built-in delays for API usage guidelines
-* **Semantic Search:** Find papers semantically similar to a query using document embeddings
-
-### 🧠 Technical Features
-
-* Semantic ranking and similarity search
-* Batch embedding processing
-* MySQL backend with BLOB storage
-* Swagger UI for API testing
-* Deduplication and error handling
+* `paperScraper.py`: Fetches paper metadata from the arXiv API based on keywords and categories.
+* `xmlparser.py`: Parses XML responses, extracts metadata, generates sentence embeddings, and stores data into SQLite.
+* `similarity_score.py`: Retrieves embeddings and calculates cosine similarity to find the most similar papers.
+* `arxiv_corpus.db`: SQLite database storing parsed metadata and embeddings.
+* `arxiv_papers_response.xml`: Sample XML file for parsing/testing.
+* `response.xml`: Another example XML file for alternative queries.
+* `README.md`: Comprehensive project guide.
 
 ---
 
-## 🛠️ Tech Stack
-
-| Component          | Technology                  |
-| ------------------ | --------------------------- |
-| **Backend**        | FastAPI, Python             |
-| **Database**       | MySQL                       |
-| **Embeddings**     | Sentence-BERT, Transformers |
-| **XML Processing** | lxml, XPath                 |
-| **Data Source**    | arXiv API                   |
-
----
-
-## 📦 Installation & Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 
 * Python 3.8+
-* MySQL Server (native or via Docker)
-* Git
+* `pip` (Python package installer)
 
-### Step-by-Step Setup
+### Installation
+
+Clone the repository:
 
 ```bash
-# 1. Clone Repository
 git clone https://github.com/Viresh26/Text_Technology.git
 cd Text_Technology
-
-# 2. Create Virtual Environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# 3. Install Dependencies
-pip install requests lxml mysql-connector-python sentence-transformers torch python-dotenv fastapi uvicorn
-
-# 4. MySQL Setup
-# Option 1: Docker
-docker run --name arxiv-mysql -e MYSQL_ROOT_PASSWORD=my_strong_password -p 3306:3306 -d mysql/mysql-server:latest
-
-# Option 2: Native MySQL
-mysql -u root -p
 ```
 
-### Database Configuration
-
-```sql
-CREATE DATABASE arxiv_papers;
-CREATE USER 'arxiv_app_user'@'localhost' IDENTIFIED BY 'your_secure_password';
-GRANT ALL PRIVILEGES ON arxiv_papers.* TO 'arxiv_app_user'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-```
-
-### Environment Variables
-
-Create `.env` file in project root:
-
-```ini
-MYSQL_HOST=localhost
-MYSQL_USER=arxiv_app_user
-MYSQL_PASSWORD=your_secure_password
-MYSQL_DATABASE=arxiv_papers
-```
-
----
-
-## 📁 Project Structure
-
-```
-Text_Technology/
-├── README.md             # This file
-├── .env                  # Database credentials (create this)
-├── requirements.txt      # Python dependencies (optional)
-├── pyscraper.py         # Demonstration script for arXiv API
-├── arxiv_pipeline.py    # Main data ingestion pipeline
-└── fastapi_app.py       # Embedding API server
-```
-
----
-
-## 🔄 Usage Workflow
-
-### Phase 1: Data Ingestion and Embedding Generation
-
-Run the pipeline script to fetch and process papers:
+Install dependencies:
 
 ```bash
-python arxiv_pipeline.py
+pip install requests sentence-transformers numpy
 ```
 
-**What it does:**
-* Connects to MySQL, creates table if missing
-* Fetches papers (default 200 from `cs.AI`) from arXiv API
-* Parses XML and inserts metadata
-* Generates and stores embeddings for papers without embeddings
+> ⚠️ The `sentence-transformers` library will automatically download the `'all-MiniLM-L6-v2'` model on first use.
 
-**Customize the fetch:**
+---
 
-```python
-# In arxiv_pipeline.py, modify the main call:
-if __name__ == "__main__":
-    run_pipeline(search_category="cat:physics.comp-ph", max_papers_to_fetch=100)
-    # or
-    # run_pipeline(search_query="au:Y. Lecun", max_papers_to_fetch=50)
-```
+## ⚙️ How It Works
 
-### Phase 2: Running the Embedding API
+### 1. Fetching Data (`paperScraper.py`)
 
-Start FastAPI server:
+* Defines a list of Computer Science subcategories (`cs.AI`, `cs.CL`, `cs.HC`, `cs.LG`, `cs.MA`)
+* Builds an arXiv API query using a user-provided keyword
+* Sends HTTP GET request to the arXiv API
+* Returns XML content
+
+### 2. Parsing and Storing Data (`xmlparser.py`)
+
+* **Database Creation:** Initializes `arxiv_corpus.db` and creates a table with fields for metadata and embeddings
+* **XML Parsing:** Uses `ElementTree` to parse response and extract paper entries
+* **Embedding Generation:** Generates embeddings for paper summaries using `all-MiniLM-L6-v2`
+* **Data Insertion:** Stores paper data and embeddings into the database
+
+### 3. Finding Similar Papers (`similarity_score.py`)
+
+* **arXiv ID Extraction:** Gets the ID from a given arXiv link
+* **Paper Fetching:** Fetches metadata using the arXiv API
+* **Embedding:** Generates a new abstract embedding
+* **Database Query:** Retrieves stored paper embeddings
+* **Cosine Similarity:** Compares new embedding to database entries
+* **Result:** Returns the most similar paper
+
+---
+
+## 🏃 Usage Examples
+
+### 1. Initialize the Database and Populate with Papers
 
 ```bash
-uvicorn fastapi_app:app --host 0.0.0.0 --port 8000 --reload
+python xmlparser.py
 ```
 
-Access API documentation:
-```
-http://127.0.0.1:8000/docs
-```
+> Enter a keyword (e.g., "voice", "GPT 3.5", "machine learning"). Fetches 5 papers and stores them.
 
-### Auxiliary: Paper Scraper Demo
-
-The `pyscraper.py` demonstrates basic arXiv API usage:
+### 2. Find Similar Papers
 
 ```bash
-python pyscraper.py
+python similarity_score.py
 ```
 
-* Demonstrates keyword search for arXiv CS papers
-* Fetches and logs raw XML responses
-* For learning API calls, not full ingestion
-
----
-
-## 📡 API Documentation
-
-### 1. Health Check
-
-**GET** `/health`
-
-Response:
-```json
-{
-  "status": "ok",
-  "model_loaded": true
-}
-```
-
-### 2. Single Text Embedding
-
-**POST** `/embed`
-
-Input:
-```json
-{
-  "text": "Your abstract or text here."
-}
-```
-
-Response:
-```json
-{
-  "embedding": [0.1234, -0.5678, ...],
-  "model_used": "all-MiniLM-L6-v2"
-}
-```
-
-### 3. Batch Embedding
-
-**POST** `/embed_batch`
-
-Input:
-```json
-{
-  "texts": [
-    "First document text",
-    "Second document text"
-  ]
-}
-```
-
-Response:
-```json
-{
-  "embeddings": [
-    [0.111, -0.222, ...],
-    [0.333, -0.444, ...]
-  ],
-  "model_used": "all-MiniLM-L6-v2"
-}
-```
-
-### 4. Search Similar Papers by Semantic Similarity
-
-**POST** `/search_similar_papers`
-
-Searches the locally stored arXiv papers for documents semantically similar to the query_text. Returns the top_k most similar papers along with their similarity scores.
-
-Input:
-```json
-{
-  "query_text": "Explain recent breakthroughs in artificial intelligence for medical diagnosis.",
-  "top_k": 5
-}
-```
-
-Response:
-```json
-{
-  "query_embedding": [...],
-  "results": [
-    {
-      "arxiv_id": "2301.01234",
-      "title": "AI in Medical Imaging: A Review",
-      "abstract": "This paper reviews...",
-      "authors": "Jane Doe, John Smith",
-      "primary_category": "cs.CV",
-      "published_date": "2023-01-15",
-      "similarity_score": 0.876
-    }
-    // ... more similar papers
-  ],
-  "model_used": "all-MiniLM-L6-v2"
-}
-```
-
----
-
-## 🧪 Usage Examples
-
-```python
-import requests
-
-# Health check
-response = requests.get("http://localhost:8000/health")
-print(response.json())
-
-# Single embedding
-response = requests.post("http://localhost:8000/embed", json={
-    "text": "This paper proposes a novel neural network architecture for natural language processing."
-})
-embedding = response.json()["embedding"]
-
-# Batch embeddings
-response = requests.post("http://localhost:8000/embed_batch", json={
-    "texts": [
-        "First research paper abstract...",
-        "Second research paper abstract..."
-    ]
-})
-embeddings = response.json()["embeddings"]
-
-# Semantic search for similar papers
-response = requests.post("http://localhost:8000/search_similar_papers", json={
-    "query_text": "new machine learning methods for healthcare",
-    "top_k": 3
-})
-search_results = response.json()
-print(search_results)
-```
-
----
-
-## 🚧 Common Challenges & Solutions
-
-| Challenge         | Solution                         |
-| ----------------- | -------------------------------- |
-| arXiv Rate Limits | Smart batching and delays        |
-| Large Embedding Storage | MySQL BLOB with compression |
-| Memory Usage      | Batch processing + cleanup       |
-| API Timeouts      | Retry logic and error handling   |
-
----
-
-## 🔮 Future Roadmap
-
-### Phase 1 – Enhanced Search
-
-* Similarity search endpoint
-* Advanced filtering by category/author
-* Citation analysis integration
-
-### Phase 2 – User Interface
-
-* Web frontend (React/Streamlit)
-* Personalized paper recommendations
-* Paper collection management
-
-### Phase 3 – Advanced Features
-
-* Multi-modal search (text + metadata)
-* Research collaboration tools
-* Public API with authentication
-
----
-
-## 🚀 Deployment Notes
-
-* Use a `Dockerfile` to containerize for cloud deployment
-* Manage environment variables securely on platform
-* Adjust CORS `allow_origins` in `fastapi_app.py` for production
-* Add `.env` to `.gitignore`
-* Consider using FAISS for large-scale similarity search
+> Enter an arXiv link (e.g., `https://arxiv.org/pdf/2304.11079v1`). Returns the most similar paper from the database.
 
 ---
 
 ## 🧪 Testing
 
+### Test individual components:
+
 ```bash
-# Test the pipeline
-python arxiv_pipeline.py
+# Test the paper scraper (prints XML)
+python paperScraper.py
 
-# Test the API
-uvicorn fastapi_app:app --reload
-# Then visit http://localhost:8000/docs
+# Test XML parser and database population
+python xmlparser.py
 
-# Test individual components
-python pyscraper.py
+# Test similarity score calculation
+python similarity_score.py
 ```
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Add your feature and test it
+Contributions welcome!
+
+1. Fork the repo
+2. Create a feature branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Add your feature & test it
 4. Push and open a Pull Request
 
 ---
@@ -413,33 +182,26 @@ python pyscraper.py
 ## 📚 References
 
 * [arXiv API Documentation](https://info.arxiv.org/help/api/index.html)
-* [Sentence-BERT Paper](https://www.sbert.net/)
+* [Sentence-BERT Paper](https://arxiv.org/abs/1908.10084)
 * [FastAPI Documentation](https://fastapi.tiangolo.com/)
-* Reimers & Gurevych, 2019 - Sentence-BERT
-* Cer et al., 2018 - Universal Sentence Encoder
+* Reimers & Gurevych, 2019 – Sentence-BERT
+* Cer et al., 2018 – Universal Sentence Encoder
 
 ---
 
 ## 📄 License
 
-Licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+Licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
 ## 👥 Authors
 
-* **Rustom Bhesania** - Co-developer
-* **Viresh Kashetti** - Co-developer
+* **Rustom Bhesania** – Co-developer
+* **Viresh Kashetti** – Co-developer
 
-*Text Technology Summer 25*
-
----
-
-## 🆘 Support
-
-* [GitHub Issues](https://github.com/Viresh26/Text_Technology/issues)
-* [GitHub Repository](https://github.com/Viresh26/Text_Technology)
+> *Text Technology Summer 25*
 
 ---
 
-**⭐ Found it helpful? Star the repo to show your support!**
+
