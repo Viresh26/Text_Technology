@@ -68,7 +68,7 @@ graph TD
 * `similarity_score.py`: Retrieves embeddings and calculates cosine similarity to find the most similar papers.
 * `arxiv_corpus.db`: SQLite database storing parsed metadata and embeddings.
 * `arxiv_papers_response.xml`: Sample XML file for parsing/testing.
-* `response.xml`: Another example XML file for alternative queries.
+* `response.xml`: Temporarily generated file used for printing and inspecting arXiv API responses during testing.  
 * `README.md`: Comprehensive project guide.
 
 ---
