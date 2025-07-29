@@ -163,21 +163,7 @@ python similarity_score.py
 
 ---
 
-## 🤝 Contributing
 
-Contributions welcome!
-
-1. Fork the repo
-2. Create a feature branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Add your feature & test it
-4. Push and open a Pull Request
-
----
 
 ## 📚 References
 
