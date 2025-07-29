@@ -1,3 +1,8 @@
+Here's the **fully merged and comprehensive `README.md`** that combines all content from your previous documents — with nothing left out:
+
+---
+
+````markdown
 # 📚 arXiv Research Paper Search Engine
 
 > Efficient Academic Paper Discovery with Advanced XML Querying and Document Embeddings
@@ -16,19 +21,21 @@
 
 Current academic research discovery faces several challenges:
 
-- **Time-Intensive Literature Review**: Finding similar papers requires significant manual effort
-- **Limited Search Capabilities**: arXiv searches are primarily based on titles and authors, not paper content
-- **Lack of Semantic Understanding**: Traditional keyword matching misses conceptually similar papers
-- **No Similarity Analysis**: Researchers need advanced techniques like document embeddings to find related work
+- **Time-Intensive Literature Review**
+- **Limited Search Capabilities**
+- **Lack of Semantic Understanding**
+- **No Similarity Analysis**
+
+---
 
 ## 💡 Proposed Solution
 
-We aim to create a **local database of arXiv papers** with advanced similarity evaluation capabilities to streamline literature review processes. Our solution leverages:
+A **local database of arXiv papers** with advanced similarity evaluation using:
 
-- **Document Embeddings** for semantic similarity
-- **XML-based Data Processing** for efficient parsing
-- **Multi-Modal Search** capabilities
-- **Real-Time API Integration** with intelligent caching
+- Document Embeddings (e.g., BERT)
+- XPath/XQuery-based XML parsing
+- Multi-modal Search Capabilities
+- FastAPI Interface for Real-Time Semantic Search
 
 ---
 
@@ -43,251 +50,264 @@ graph TD
     E --> F[Document Embeddings]
     F --> G[Similarity Comparison]
     G --> H[Similar Papers Output]
-    
+
     I[User Query] --> J[Multi-Modal Search Engine]
     J --> D
     J --> F
-    
+
     style A fill:#ff9800
     style D fill:#4caf50
     style F fill:#2196f3
     style H fill:#9c27b0
-```
-
-### Data Flow Architecture
-
-```
-┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌──────────────┐
-│ arXiv API   │────│ XML Parser   │────│ MySQL DB    │────│ Embedding    │
-│ • Category  │    │ • XPath      │    │ • Abstracts │    │ Generator    │
-│ • Keyword   │    │ • XQuery     │    │ • Metadata  │    │ • Transformers│
-│ • Author    │    │ • XML Schema │    │ • Relations │    │ • Similarity │
-└─────────────┘    └──────────────┘    └─────────────┘    └──────────────┘
-```
+````
 
 ---
 
-## 🔄 Workflow Process
+## 🔄 Workflow
 
 ### 1. Data Collection
-- **arXiv API Integration**: Fetch papers by Category, Keyword, or Author
-- **XML Response Processing**: Direct API requests provide structured XML data
-- **Batch Processing**: Multiple papers retrieved in single API calls
-- **Metadata Focus**: Abstracts and essential paper information
-- **Semantic Scholar Backup**: Additional data source when needed
 
-### 2. Data Processing Pipeline
+* arXiv API fetch by category/author/keyword
+* XML response with abstract and metadata
+* Batch download and XML parsing
+* MySQL storage and deduplication
+
+### 2. Data Processing
+
 ```
-XML Response → XPath/XQuery Parsing → MySQL Storage → Embedding Generation → Similarity Analysis
+XML → XPath/XQuery → MySQL → BERT Embedding → Semantic Index
 ```
 
 ### 3. Search & Discovery
-- **Reference Paper Input**: User provides a paper of interest
-- **Embedding Comparison**: Generate and compare document embeddings
-- **Similarity Ranking**: Return papers with closest semantic similarity
-- **Literature Recommendations**: Suggest papers for further reading
+
+* Input a reference paper
+* Compute embedding
+* Compare with database
+* Return ranked similar papers
 
 ---
 
 ## 🚀 Key Features
 
-### Core Functionality
-- **Multi-Modal Search**: Support for keyword, semantic, author, and category-based searches
-- **Advanced XML Querying**: XPath and XQuery capabilities for precise data extraction
-- **Smart Analytics**: Topic similarity using state-of-the-art document embeddings
-- **Real-Time Integration**: Live arXiv API with intelligent caching strategies
+### 📌 Core
 
-### Technical Features
-- **Document Embeddings**: Multiple embedding models for semantic analysis
-- **Export Options**: PDF and HTML output formats
-- **Rate Limit Management**: Smart scheduling to respect arXiv API constraints
-- **Local Database**: MySQL storage for fast retrieval and analysis
+* Multi-Modal Search
+* XML-based structured querying
+* Semantic ranking
+* Real-time FastAPI access
 
----
+### 🧠 Technical
 
-## 🛠️ Technology Stack
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Backend API** | FastAPI | High-performance REST API |
-| **Database** | MySQL | Structured data storage |
-| **XML Processing** | XPath/XQuery | Data parsing and extraction |
-| **Embeddings** | Transformers | Document similarity analysis |
-| **Data Source** | arXiv API | Primary research paper source |
-| **Additional Data** | Semantic Scholar | Supplementary paper information |
-
-### Embedding Models Considered
-- **Sentence-BERT** (all-MiniLM-L6-v2)
-- **Universal Sentence Encoder**
-- **Doc2Vec** (Gensim)
-- **E5 Models** (intfloat/e5-small)
+* Sentence-BERT: all-MiniLM-L6-v2
+* Embedding batch processing
+* MySQL backend with BLOB storage
+* Swagger UI for API testing
+* Rate limit aware fetch pipeline
 
 ---
 
-## 📋 Installation & Setup
+## 🛠️ Tech Stack
+
+| Component          | Technology                  |
+| ------------------ | --------------------------- |
+| **Backend**        | FastAPI, Python             |
+| **Database**       | MySQL                       |
+| **Embeddings**     | Sentence-BERT, Transformers |
+| **XML Processing** | XPath, XQuery, lxml         |
+| **Infra**          | Docker (optional)           |
+| **Data Source**    | arXiv, Semantic Scholar     |
+
+---
+
+## 📦 Installation & Setup
 
 ### Prerequisites
-- Python 3.8+
-- MySQL 8.0+
-- Git
 
-### Quick Start
+* Python 3.8+
+* MySQL 8.0+
+* Docker (optional)
+* Git
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Viresh26/Text_Technology.git
-   cd Text_Technology
-   ```
+### Step-by-Step
 
-2. **Set up virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+```bash
+# 1. Clone Repo
+git clone https://github.com/Viresh26/Text_Technology.git
+cd Text_Technology
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# 2. Virtual Env
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-4. **Configure MySQL database**
-   ```bash
-   # Create database and update connection settings
-   mysql -u root -p
-   CREATE DATABASE arxiv_papers;
-   ```
+# 3. Install Deps
+pip install -r requirements.txt
 
-5. **Initialize database schema**
-   ```bash
-   python scripts/init_database.py
-   ```
+# 4. MySQL Setup
+mysql -u root -p
+CREATE DATABASE arxiv_papers;
+CREATE USER 'arxiv_app_user'@'localhost' IDENTIFIED BY 'your_secure_password';
+GRANT ALL PRIVILEGES ON arxiv_papers.* TO 'arxiv_app_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
 
-6. **Start the FastAPI server**
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
+# 5. Add .env
+echo "MYSQL_HOST=localhost
+MYSQL_USER=arxiv_app_user
+MYSQL_PASSWORD=your_secure_password
+MYSQL_DATABASE=arxiv_papers" > .env
 
-7. **Access the API documentation**
-   - API Docs: http://localhost:8000/docs
+# 6. Init Schema
+python scripts/init_database.py
 
----
+# 7. Run Pipeline
+python arxiv_pipeline.py
 
-## 🔍 Usage Examples
-
-### Basic Paper Search
-```python
-import requests
-
-# Search by keyword
-response = requests.get(
-    "http://localhost:8000/search",
-    params={
-        "query": "machine learning",
-        "category": "cs.AI",
-        "max_results": 20
-    }
-)
-papers = response.json()
-```
-
-### Similarity Analysis
-```python
-# Find similar papers
-response = requests.post(
-    "http://localhost:8000/similarity",
-    json={
-        "reference_paper_id": "2103.00020",
-        "similarity_threshold": 0.7
-    }
-)
-similar_papers = response.json()
-```
-
-### XML Query Processing
-```python
-# Advanced XML querying
-response = requests.post(
-    "http://localhost:8000/xml-query",
-    json={
-        "xpath": "//entry[contains(summary, 'neural network')]",
-        "limit": 50
-    }
-)
-results = response.json()
+# 8. Start API
+uvicorn fastapi_app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ---
 
-## 🚧 Challenges & Solutions
+## 📡 API Documentation
 
-### Data Availability & Access
-- **Challenge**: arXiv API rate limits require careful request management
-- **Solution**: Implement smart scheduling and local caching strategies
-- **Challenge**: Not all research papers are available on arXiv
-- **Solution**: Integration with Semantic Scholar for broader coverage
+Access via: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-### Performance Constraints
-- **Challenge**: Document embedding generation requires significant compute resources
-- **Solution**: Efficient batching and model optimization techniques
-- **Challenge**: Real-time similarity comparison at scale
-- **Solution**: Pre-computed embeddings with indexed similarity search
+### /health (GET)
+
+```json
+{
+  "status": "ok",
+  "model_loaded": true
+}
+```
+
+### /embed (POST)
+
+```json
+{
+  "text": "This paper proposes a new algorithm..."
+}
+```
+
+Returns:
+
+```json
+{
+  "embedding": [...],
+  "model_used": "all-MiniLM-L6-v2"
+}
+```
+
+### /embed\_batch (POST)
+
+```json
+{
+  "texts": ["Doc 1 text", "Doc 2 text"]
+}
+```
+
+Returns:
+
+```json
+{
+  "embeddings": [[...], [...]],
+  "model_used": "all-MiniLM-L6-v2"
+}
+```
 
 ---
 
-## 🔮 Future Roadmap
+## 🧪 Usage Examples
 
-### Phase 1: Core Enhancements
-- **Personalized Recommendations**: User-specific paper suggestions based on reading history
-- **Citation Analysis**: Advanced bibliometric insights and paper impact analysis
+```python
+# Search papers
+res = requests.get("http://localhost:8000/search", params={
+    "query": "machine learning",
+    "category": "cs.AI",
+    "max_results": 20
+})
 
-### Phase 2: Platform Expansion
-- **Open Access API**: Public API with comprehensive documentation
-- **Micro-SaaS Plugin**: Browser extension for seamless research workflow integration
-- **Frontend Interface**: Web-based user interface for non-technical users
+# Similarity analysis
+res = requests.post("http://localhost:8000/similarity", json={
+    "reference_paper_id": "2103.00020",
+    "similarity_threshold": 0.7
+})
 
-### Phase 3: Collaboration Features
-- **Shared Collections**: Collaborative paper libraries and research groups
-- **Annotation Tools**: Collaborative paper annotation and discussion features
-- **Research Networks**: Connect researchers with similar interests
+# XML Query
+res = requests.post("http://localhost:8000/xml-query", json={
+    "xpath": "//entry[contains(summary, 'neural network')]",
+    "limit": 50
+})
+```
 
 ---
 
-## 📊 Project Structure
+## 🧱 Project Structure
 
 ```
 Text_Technology/
-├── 📄 main.py                 # FastAPI application entry
-├── 📁 api/                    # API route handlers
-│   ├── 📄 search.py          # Search endpoints
-│   ├── 📄 similarity.py      # Similarity analysis
-│   └── 📄 xml_query.py       # XML processing endpoints
-├── 📁 core/                   # Core business logic
-│   ├── 📄 arxiv_client.py    # arXiv API client
-│   ├── 📄 xml_processor.py   # XML parsing utilities
-│   ├── 📄 embeddings.py      # Document embedding generation
-│   └── 📄 similarity.py      # Similarity computation
-├── 📁 database/              # Database layer
-│   ├── 📄 models.py          # Database models
-│   ├── 📄 connection.py      # MySQL connection
-│   └── 📄 repositories.py    # Data access layer
-├── 📁 scripts/               # Utility scripts
-│   └── 📄 init_database.py   # Database initialization
-├── 📁 tests/                 # Test suite
-├── 📄 requirements.txt       # Dependencies
-└── 📄 README.md             # This file
+├── main.py               # FastAPI entry point
+├── fastapi_app.py        # Embedding API
+├── arxiv_pipeline.py     # Ingestion pipeline
+├── .env                  # DB credentials
+├── requirements.txt
+├── scripts/
+│   └── init_database.py
+├── api/
+│   ├── search.py
+│   ├── similarity.py
+│   └── xml_query.py
+├── core/
+│   ├── arxiv_client.py
+│   ├── xml_processor.py
+│   ├── embeddings.py
+│   └── similarity.py
+├── database/
+│   ├── models.py
+│   ├── connection.py
+│   └── repositories.py
+├── tests/
+└── README.md
 ```
+
+---
+
+## 🚧 Challenges
+
+| Challenge         | Solution                         |
+| ----------------- | -------------------------------- |
+| arXiv Rate Limits | Smart batching and delays        |
+| Missing Metadata  | Semantic Scholar fallback        |
+| Embedding Cost    | Batch processing + caching       |
+| Scaling Search    | Indexed similarity (e.g., FAISS) |
+
+---
+
+## 🔮 Roadmap
+
+### Phase 1 – Core
+
+* Personalized Paper Recommendations
+* Citation Graph / Impact Analysis
+
+### Phase 2 – Productization
+
+* Public API
+* Browser Plugin
+* Frontend UI (React or Streamlit)
+
+### Phase 3 – Collaboration
+
+* Shared Libraries
+* Annotations & Comments
+* Research Network Tools
 
 ---
 
 ## 🧪 Testing
 
-Run the test suite:
 ```bash
 pytest tests/ -v
-```
-
-Test with coverage:
-```bash
 pytest tests/ --cov=core --cov-report=html
 ```
 
@@ -295,36 +315,33 @@ pytest tests/ --cov=core --cov-report=html
 
 ## 🤝 Contributing
 
-We welcome contributions to improve the arXiv Research Paper Search Engine!
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes and add tests
-4. Commit: `git commit -am 'Add new feature'`
-5. Push: `git push origin feature-name`
-6. Submit a pull request
+1. Fork the repo
+2. Create a branch: `git checkout -b feature-name`
+3. Add your feature + tests
+4. Push and open a PR
 
 ---
 
 ## 📚 References
 
-- **arXiv API Documentation**: https://info.arxiv.org/help/api/index.html
-- **GitHub Repository**: https://github.com/Viresh26/Text_Technology
-- **Sentence-BERT**: Reimers & Gurevych (2019)
-- **Universal Sentence Encoder**: Cer et al. (2018)
+* [arXiv API Docs](https://info.arxiv.org/help/api/index.html)
+* [Sentence-BERT](https://www.sbert.net/)
+* [Semantic Scholar API](https://api.semanticscholar.org/)
+* Reimers & Gurevych, 2019
+* Cer et al., 2018 (USE)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the **MIT License**. See the [LICENSE](LICENSE) file.
 
 ---
 
 ## 👥 Authors
 
-- **Rustom Bhesania** - Co-developer
-- **Viresh Kashetti** - Co-developer
+* **Rustom Bhesania**
+* **Viresh Kashetti**
 
 *Text Technology Summer 25*
 
@@ -332,9 +349,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **GitHub Issues**: [Report bugs and feature requests](https://github.com/Viresh26/Text_Technology/issues)
-- **GitHub Repository**: [Source code and documentation](https://github.com/Viresh26/Text_Technology)
+* [GitHub Issues](https://github.com/Viresh26/Text_Technology/issues)
+* [GitHub Repo](https://github.com/Viresh26/Text_Technology)
 
 ---
 
-**⭐ If you find this project useful for your research, please consider giving it a star!**
+**⭐ Found it helpful? Star the repo to show your support!**
+
+```
+
+---
+
+Let me know if you'd like:
+
+- A clean `Dockerfile`
+- A `.gitignore` template
+- A deployment guide (Heroku, Render, EC2, etc.)
+- Or integration with frontend tools like Streamlit or React
+
+I'm happy to help streamline the next phase.
+```
