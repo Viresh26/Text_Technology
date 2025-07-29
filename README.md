@@ -69,6 +69,7 @@ graph TD
 * **REST API:** Easy integration with frontend apps or other services
 * **CORS Enabled:** Ready for cross-origin HTTP requests
 * **Rate Limit Respect:** Built-in delays for API usage guidelines
+* **Semantic Search:** Find papers semantically similar to a query using document embeddings
 
 ### 🧠 Technical Features
 
@@ -270,6 +271,40 @@ Response:
 }
 ```
 
+### 4. Search Similar Papers by Semantic Similarity
+
+**POST** `/search_similar_papers`
+
+Searches the locally stored arXiv papers for documents semantically similar to the query_text. Returns the top_k most similar papers along with their similarity scores.
+
+Input:
+```json
+{
+  "query_text": "Explain recent breakthroughs in artificial intelligence for medical diagnosis.",
+  "top_k": 5
+}
+```
+
+Response:
+```json
+{
+  "query_embedding": [...],
+  "results": [
+    {
+      "arxiv_id": "2301.01234",
+      "title": "AI in Medical Imaging: A Review",
+      "abstract": "This paper reviews...",
+      "authors": "Jane Doe, John Smith",
+      "primary_category": "cs.CV",
+      "published_date": "2023-01-15",
+      "similarity_score": 0.876
+    }
+    // ... more similar papers
+  ],
+  "model_used": "all-MiniLM-L6-v2"
+}
+```
+
 ---
 
 ## 🧪 Usage Examples
@@ -295,6 +330,14 @@ response = requests.post("http://localhost:8000/embed_batch", json={
     ]
 })
 embeddings = response.json()["embeddings"]
+
+# Semantic search for similar papers
+response = requests.post("http://localhost:8000/search_similar_papers", json={
+    "query_text": "new machine learning methods for healthcare",
+    "top_k": 3
+})
+search_results = response.json()
+print(search_results)
 ```
 
 ---
